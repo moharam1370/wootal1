@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ووتال | کارگاه چوب و آهن</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap">
+<style>
+:root{
+  --bg:#121315; --panel:#1b1d21; --panel2:#24272c; --ink:#f1ebe2; --muted:#a8a29a; --line:rgba(241,235,226,.14);
+  --oak:#d19a62; --walnut:#5a3523; --chrome:#d9dee3; --ember:#ff7a1a; --gold:#ffc766; --forge:#17181b;
+  --font:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){--bg:#f1ebe2;--panel:#fbf7f0;--panel2:#efe6d8;--ink:#1c1a18;--muted:#615b54;--line:rgba(28,26,24,.16)}
+}
+:root[data-theme="light"]{--bg:#f1ebe2;--panel:#fbf7f0;--panel2:#efe6d8;--ink:#1c1a18;--muted:#615b54;--line:rgba(28,26,24,.16)}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.9;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--forge);z-index:60}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px;position:relative}
+svg{display:block;width:100%;height:auto}
+
+/* header with weld progress */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(23,24,27,.82);backdrop-filter:blur(10px);color:#f4ede3}
+.bar{display:flex;align-items:center;justify-content:space-between;height:70px}
+.prog{position:absolute;inset-inline:0;bottom:0;height:3px}
+.prog i{display:block;height:100%;width:var(--sp,0%);background:linear-gradient(90deg,var(--ember),var(--gold));box-shadow:0 0 12px var(--ember)}
+.logo{display:flex;align-items:center;gap:12px;font-weight:900;font-size:24px}
+.logo i{width:30px;height:30px;border-radius:4px;display:block;background:linear-gradient(90deg,var(--oak) 0 50%,var(--chrome) 50% 100%);box-shadow:0 0 18px rgba(255,150,50,.6)}
+nav{display:flex;gap:28px;font-size:15px;color:#d0c8bc}
+nav a:hover{color:var(--gold)}
+.btn{display:inline-block;padding:12px 26px;border-radius:4px;font-weight:700;font-size:15px;border:0;cursor:pointer;font-family:inherit;transition:transform .2s,box-shadow .2s,background .2s}
+.btn.hot{color:#1b1209;background:linear-gradient(180deg,var(--gold),var(--ember));box-shadow:0 6px 22px rgba(255,122,26,.45),inset 0 1px 0 rgba(255,255,255,.6)}
+.btn.hot:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,122,26,.65),inset 0 1px 0 rgba(255,255,255,.6)}
+.btn.cold{color:#f4ede3;background:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.4)}
+.btn.cold:hover{background:rgba(255,255,255,.16)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;color:#f4ede3;background:var(--forge);isolation:isolate;cursor:crosshair}
+.hero::before{content:"";position:absolute;inset:0;z-index:-3;
+  background:
+    radial-gradient(60% 55% at 30% 62%,rgba(255,122,26,.30),transparent 70%),
+    radial-gradient(40% 40% at 78% 20%,rgba(120,160,255,.10),transparent 70%),
+    repeating-linear-gradient(45deg,rgba(255,255,255,.035) 0 2px,transparent 2px 14px),
+    repeating-linear-gradient(-45deg,rgba(255,255,255,.035) 0 2px,transparent 2px 14px),
+    linear-gradient(180deg,#26292e,#14151a)}
+.rivets{position:absolute;inset:0;z-index:-2;pointer-events:none;opacity:.35;
+  background:radial-gradient(circle,rgba(255,255,255,.35) 0 2px,transparent 3px) 0 0/90px 90px,radial-gradient(circle,rgba(0,0,0,.5) 0 2px,transparent 3px) 4px 4px/90px 90px}
+.floor{position:absolute;inset-inline:0;bottom:0;height:23%;z-index:-2;
+  background:repeating-linear-gradient(90deg,rgba(0,0,0,.55) 0 2px,transparent 2px 120px),repeating-linear-gradient(92deg,rgba(255,255,255,.06) 0 6px,rgba(0,0,0,.14) 6px 9px,transparent 9px 19px),linear-gradient(180deg,#8a5a34,#4a2c1b);
+  box-shadow:inset 0 14px 24px rgba(0,0,0,.55),0 -2px 0 rgba(255,199,102,.35)}
+.floor::after{content:"";position:absolute;inset:0;background:radial-gradient(50% 120% at 30% 0,rgba(255,150,50,.38),transparent 70%)}
+#sparks{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none}
+.hg{display:grid;grid-template-columns:1.05fr 1fr;gap:30px;align-items:center;padding:54px 0 140px;position:relative;z-index:2}
+h1{font-size:clamp(36px,5.8vw,68px);line-height:1.3;font-weight:900;margin:0 0 20px;
+  background:linear-gradient(100deg,#fff 0%,#c9d0d6 30%,#fff 45%,var(--gold) 58%,#c9d0d6 72%,#fff 100%);background-size:250% 100%;
+  -webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 6s ease-in-out infinite alternate}
+@keyframes shine{from{background-position:100% 0}to{background-position:0 0}}
+.hero p{color:#d6cdc0;font-size:18px;max-width:46ch;margin:0 0 30px}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.hint{margin-top:22px;font-size:14px;color:var(--gold);display:flex;align-items:center;gap:8px}
+.hint::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--ember);box-shadow:0 0 12px var(--ember);animation:arc .6s steps(2) infinite alternate}
+
+.stage{position:relative;max-width:540px;width:100%;aspect-ratio:1.05/1;margin-inline:auto;transition:transform .15s ease-out;will-change:transform}
+.slab{position:absolute;inset-inline:4%;top:24%;height:15%;border-radius:6px;overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,.55) 0,rgba(255,255,255,0) 38%),repeating-linear-gradient(91deg,rgba(60,28,8,0) 0 8px,rgba(60,28,8,.22) 8px 10px,rgba(255,235,200,.10) 10px 18px),linear-gradient(180deg,#e0a266,#8a5430 70%,#4f2d1a);
+  box-shadow:0 24px 30px rgba(0,0,0,.55),inset 0 -4px 0 rgba(0,0,0,.35)}
+.slab::after{content:"";position:absolute;top:0;bottom:0;width:22%;left:-30%;transform:skewX(-20deg);background:linear-gradient(90deg,transparent,rgba(255,255,255,.5),transparent);animation:glint 5s ease-in-out infinite}
+@keyframes glint{0%,55%{left:-30%}100%{left:130%}}
+.leg{position:absolute;top:38%;width:5.5%;height:46%;background:linear-gradient(90deg,#6b737b,#f2f5f7 28%,#8e969e 55%,#3a4047);box-shadow:0 0 0 1px rgba(0,0,0,.4)}
+.leg.l{inset-inline-start:14%;transform:skewX(8deg)}.leg.r{inset-inline-end:14%;transform:skewX(-8deg)}
+.leg.l::before{content:"";position:absolute;inset:0 0 70% 0;background:linear-gradient(180deg,rgba(255,122,26,.85),transparent)}
+.brace{position:absolute;top:66%;inset-inline:17%;height:2.8%;background:linear-gradient(180deg,#f2f5f7,#7c848c 60%,#3a4047);border-radius:2px}
+.weld{position:absolute;top:36.5%;inset-inline-start:11.5%;width:11%;height:4.2%;border-radius:50%;background:radial-gradient(ellipse,#fff 0,var(--gold) 28%,var(--ember) 58%,transparent 75%);filter:blur(1px);box-shadow:0 0 40px 14px rgba(255,140,40,.8);animation:arc .18s steps(2) infinite alternate}
+@keyframes arc{from{opacity:.75;transform:scale(.9)}to{opacity:1;transform:scale(1.1)}}
+.glowfloor{position:absolute;inset-inline:0;bottom:3%;height:9%;border-radius:50%;background:radial-gradient(ellipse,rgba(255,150,50,.55),transparent 70%);filter:blur(8px)}
+.badge{position:absolute;inset-inline-end:2%;top:3%;padding:8px 16px;border-radius:30px;font-size:13px;font-weight:700;color:#1b1209;background:linear-gradient(180deg,var(--gold),var(--ember));box-shadow:0 6px 20px rgba(255,122,26,.5)}
+
+.ribbon{background:linear-gradient(90deg,#8a5430,var(--oak) 25%,#d9dee3 50%,#7c848c 75%,#3a4047);color:#15110d;font-weight:700}
+.ribbon .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px 24px;padding-top:14px;padding-bottom:14px}
+.ribbon span{display:flex;align-items:center;gap:10px}
+.ribbon span::before{content:"";width:8px;height:8px;transform:rotate(45deg);background:currentColor}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:-1px;padding:40px 0 0}
+.stat{background:var(--panel);border-radius:10px;padding:22px 26px;box-shadow:inset 0 0 0 1px var(--line);display:flex;align-items:baseline;gap:12px}
+.stat b{font-size:46px;font-weight:900;line-height:1.2;background:linear-gradient(180deg,var(--gold),var(--ember));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{color:var(--muted)}
+
+section.s{padding:84px 0}
+section.alt{background:var(--panel)}
+h2{font-size:clamp(28px,3.8vw,42px);font-weight:900;margin:0 0 10px;line-height:1.5}
+.lead{color:var(--muted);max-width:56ch;margin:0 0 44px}
+
+/* products */
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat{position:relative;border-radius:10px;padding:20px;background:var(--panel);box-shadow:inset 0 0 0 1px var(--line);transition:transform .25s,box-shadow .25s;overflow:hidden}
+.cat::before{content:"";position:absolute;inset:auto 0 0 0;height:60%;background:radial-gradient(60% 100% at 50% 100%,rgba(255,122,26,.35),transparent 70%)}
+.cat:hover{transform:translateY(-6px);box-shadow:inset 0 0 0 1px var(--ember),0 18px 40px rgba(255,122,26,.25)}
+.cat svg{height:150px;margin-bottom:12px;position:relative;filter:drop-shadow(0 14px 12px rgba(0,0,0,.45))}
+.cat h3{margin:0;font-size:20px;position:relative}.cat span{color:var(--muted);font-size:14px;position:relative}
+
+/* designer */
+.cfg{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:stretch}
+.view{border-radius:14px;padding:20px;position:relative;overflow:hidden;box-shadow:inset 0 0 0 1px var(--line);
+  background:radial-gradient(60% 55% at 50% 40%,rgba(255,180,90,.25),transparent 70%),linear-gradient(180deg,#26292e,#15171a);color:#f4ede3}
+.view::after{content:"";position:absolute;inset-inline:0;bottom:0;height:22%;background:repeating-linear-gradient(90deg,rgba(0,0,0,.5) 0 2px,transparent 2px 90px),linear-gradient(180deg,#7a4d2b,#3e2515)}
+.view svg{position:relative;z-index:1}
+.ctrl{display:flex;flex-direction:column;gap:20px}
+fieldset{border:0;padding:0;margin:0}
+legend{font-weight:900;font-size:17px;margin-bottom:10px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.chip span{display:flex;align-items:center;gap:8px;padding:8px 16px;border-radius:30px;box-shadow:inset 0 0 0 1.5px var(--line);font-size:14px;font-weight:700;background:var(--panel)}
+.chip input:checked+span{box-shadow:inset 0 0 0 2px var(--ember);background:rgba(255,122,26,.16)}
+.chip input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+.dot{width:16px;height:16px;border-radius:50%;box-shadow:inset 0 0 0 1px rgba(0,0,0,.3)}
+.rng{display:flex;align-items:center;gap:14px}
+.rng output{min-width:92px;font-weight:700;color:var(--gold)}
+.rng label{min-width:48px}
+input[type=range]{flex:1;appearance:none;-webkit-appearance:none;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--oak),var(--chrome));direction:ltr;outline-offset:6px}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:var(--ember);border:4px solid #f4ede3;box-shadow:0 2px 10px rgba(0,0,0,.5);cursor:grab}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--ember);border:4px solid #f4ede3;cursor:grab}
+.msg{display:block;background:var(--panel);border-radius:10px;padding:14px 18px;box-shadow:inset 0 0 0 1px var(--line);color:var(--muted);font-size:14px;line-height:2}
+.row{display:flex;gap:12px;flex-wrap:wrap}
+.btn.line{color:var(--ink);box-shadow:inset 0 0 0 2px var(--line);background:transparent}
+.btn.line:hover{box-shadow:inset 0 0 0 2px var(--ember)}
+
+/* timeline */
+.tl{position:relative;padding-inline-start:84px;max-width:760px;--p:0%}
+.tl::before,.tl::after{content:"";position:absolute;inset-inline-start:27px;top:0;width:4px;border-radius:2px}
+.tl::before{bottom:0;background:var(--line)}
+.tl::after{height:var(--p);background:linear-gradient(180deg,var(--gold),var(--ember));box-shadow:0 0 16px var(--ember)}
+.ts{position:relative;padding-bottom:46px;opacity:.45;transition:opacity .4s}
+.ts:last-child{padding-bottom:0}
+.ts.on{opacity:1}
+.ts i{position:absolute;inset-inline-start:-84px;top:0;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-weight:900;font-size:22px;background:var(--panel2);color:var(--muted);box-shadow:0 0 0 6px var(--bg);transition:background .4s,color .4s,box-shadow .4s}
+section.alt .ts i{box-shadow:0 0 0 6px var(--panel)}
+.ts.on i{background:radial-gradient(circle at 35% 30%,#fff,var(--gold) 45%,var(--ember));color:#1b1209}
+.ts b{display:block;font-size:22px}.ts p{margin:2px 0 0;color:var(--muted);max-width:52ch}
+
+/* before / after */
+.ba{display:grid;grid-template-columns:1fr 1.2fr;gap:40px;align-items:center}
+.pl{position:relative;aspect-ratio:16/10;border-radius:12px;overflow:hidden;direction:ltr;box-shadow:0 20px 50px rgba(0,0,0,.4);--x:50}
+.pl>div{position:absolute;inset:0}
+.raw{background:repeating-linear-gradient(93deg,rgba(0,0,0,.18) 0 2px,transparent 2px 9px),repeating-linear-gradient(88deg,rgba(255,255,255,.06) 0 4px,transparent 4px 17px),linear-gradient(180deg,#b9a98f,#8e7e66)}
+.fin{clip-path:inset(0 calc(100% - var(--x)*1%) 0 0);
+  background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 38%,transparent 46%),repeating-linear-gradient(91deg,rgba(60,28,8,0) 0 8px,rgba(60,28,8,.25) 8px 10px,rgba(255,235,200,.12) 10px 18px),linear-gradient(180deg,#e8aa68,#9a5f33 70%,#5a3320)}
+.cut{position:absolute;top:0;bottom:0;left:calc(var(--x)*1%);width:3px;background:var(--gold);box-shadow:0 0 14px var(--ember);pointer-events:none}
+.lab{position:absolute;top:14px;padding:3px 14px;border-radius:20px;font-size:13px;font-weight:700;background:rgba(0,0,0,.55);color:#fff;direction:rtl}
+.lab.a{left:14px}.lab.b{right:14px}
+.pl input{position:absolute;inset:0;width:100%;height:100%;opacity:0;margin:0;cursor:ew-resize}
+.pl:focus-within{outline:3px solid var(--gold);outline-offset:4px}
+
+.cta{border-radius:10px;padding:54px 44px;display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;color:#fff6ea;position:relative;overflow:hidden;
+  background:radial-gradient(60% 140% at 85% 120%,rgba(255,200,100,.75),transparent 60%),repeating-linear-gradient(92deg,rgba(255,255,255,.07) 0 8px,rgba(0,0,0,.18) 8px 11px),linear-gradient(120deg,#6a3a1f,#b4642a 55%,#e68a2e)}
+.cta h2{margin:0 0 6px;color:#fff6ea}.cta p{margin:0;opacity:.92}
+.cta .btn{background:#1b1209;color:var(--gold)}
+footer{background:var(--forge);color:#b8b0a4;padding:34px 0;font-size:14px;border-top:3px solid var(--ember)}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:900px){
+  nav{display:none}
+  .hg{grid-template-columns:1fr;padding-bottom:150px}
+  .stats{grid-template-columns:1fr}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .cfg,.ba{grid-template-columns:1fr}
+  .cta{grid-template-columns:1fr;padding:36px 24px}
+  .tl{padding-inline-start:74px}.ts i{inset-inline-start:-74px;width:50px;height:50px}.tl::before,.tl::after{inset-inline-start:23px}
+}
+@media (prefers-reduced-motion:reduce){h1,.slab::after,.weld,.hint::before{animation:none}.btn,.cat,.stage,.ts{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="logo" href="#top"><i aria-hidden="true"></i>ووتال</a>
+    <nav aria-label="منوی اصلی"><a href="#products">محصولات</a><a href="#design">طراحی میز</a><a href="#process">روند ساخت</a><a href="#finish">پرداخت</a></nav>
+    <a class="btn hot" href="#order">درخواست قیمت</a>
+  </div>
+  <div class="prog" aria-hidden="true"><i></i></div>
+</header>
+
+<div class="hero" id="top">
+  <div class="rivets"></div><div class="floor"></div>
+  <canvas id="sparks" aria-hidden="true"></canvas>
+  <div class="wrap hg">
+    <div>
+      <h1>جایی که آهن<br>به چوب می‌رسد</h1>
+      <p>میز، صندلی و مبلمان دست‌ساز از چوب طبیعی و آهن جوشکاری‌شده. هر کار در کارگاه ووتال طراحی و ساخته می‌شود.</p>
+      <div class="acts"><a class="btn hot" href="#design">میز خودت را طراحی کن</a><a class="btn cold" href="#products">نمونه‌کارها</a></div>
+      <div class="hint">موس را روی صحنه بکشید (یا لمس کنید) تا خودتان جرقه بزنید</div>
+    </div>
+    <div class="stage" id="stage" role="img" aria-label="تصویر گرافیکی میز با صفحه چوبی براق و پایه آهنی در حال جوشکاری">
+      <div class="glowfloor"></div><div class="slab"></div>
+      <div class="leg l"></div><div class="leg r"></div><div class="brace"></div>
+      <div class="weld" id="weld"></div><div class="badge">دست‌ساز</div>
+    </div>
+  </div>
+</div>
+
+<div class="ribbon"><div class="wrap"><span>چوب راش</span><span>چوب گردو</span><span>آهن</span><span>استیل</span><span>برنج</span><span>سفارش هر ابعاد</span></div></div>
+
+<main>
+  <div class="wrap stats">
+    <div class="stat"><b data-to="3">۳</b><span>سال تجربه در ساخت</span></div>
+    <div class="stat"><b data-to="10" data-plus="1">۱۰</b><span>نمونه‌کار آماده</span></div>
+    <div class="stat"><b data-to="100" data-pct="1">۱۰۰٪</b><span>دست‌ساز در کارگاه</span></div>
+  </div>
+
+  <section class="s" id="products">
+    <div class="wrap">
+      <h2>محصولات ووتال</h2>
+      <p class="lead">دسته‌بندی‌ها پس از جلسه با صاحب کارگاه نهایی می‌شود؛ فعلاً چهار دسته‌ی نمونه گذاشته‌ایم.</p>
+      <div class="cats">
+        <a class="cat" href="#"><div data-i="table"></div><h3>میز</h3><span>ناهارخوری، کار، کنسول</span></a>
+        <a class="cat" href="#"><div data-i="chair"></div><h3>صندلی</h3><span>اپن، ناهارخوری</span></a>
+        <a class="cat" href="#"><div data-i="shelf"></div><h3>قفسه و کتابخانه</h3><span>دیواری و ایستاده</span></a>
+        <a class="cat" href="#"><div data-i="side"></div><h3>کارهای سفارشی</h3><span>هر طرحی که در ذهن دارید</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="s alt" id="design">
+    <div class="wrap">
+      <h2>میز خودت را طراحی کن</h2>
+      <p class="lead">چوب، فلز و ابعاد را انتخاب کن. پیش‌نمایش همین‌جا ساخته می‌شود و پیام آماده برای کارگاه تولید می‌شود. قیمت را کارگاه اعلام می‌کند.</p>
+      <form class="cfg" id="cfg" onsubmit="return false">
+        <div class="view"><div id="pv" role="img" aria-label="پیش‌نمایش میز انتخابی"></div></div>
+        <div class="ctrl">
+          <fieldset><legend>چوب صفحه</legend><div class="chips">
+            <label class="chip"><input type="radio" name="wood" value="beech" checked><span><i class="dot" style="background:#e2c08e"></i>راش</span></label>
+            <label class="chip"><input type="radio" name="wood" value="walnut"><span><i class="dot" style="background:#6b4429"></i>گردو</span></label>
+            <label class="chip"><input type="radio" name="wood" value="oak"><span><i class="dot" style="background:#cf9a55"></i>بلوط</span></label>
+          </div></fieldset>
+          <fieldset><legend>فلز پایه</legend><div class="chips">
+            <label class="chip"><input type="radio" name="metal" value="black" checked><span><i class="dot" style="background:#2b2f33"></i>آهن مشکی مات</span></label>
+            <label class="chip"><input type="radio" name="metal" value="steel"><span><i class="dot" style="background:#cfd6db"></i>استیل</span></label>
+            <label class="chip"><input type="radio" name="metal" value="brass"><span><i class="dot" style="background:#d9b04c"></i>برنج</span></label>
+          </div></fieldset>
+          <div class="rng"><label for="len">طول</label><input id="len" type="range" min="100" max="220" step="10" value="150"><output id="lo"></output></div>
+          <div class="rng"><label for="wid">عرض</label><input id="wid" type="range" min="60" max="110" step="5" value="80"><output id="wo"></output></div>
+          <output class="msg" id="msg"></output>
+          <div class="row"><a class="btn hot" id="wa" href="#" target="_blank" rel="noopener">ارسال در واتساپ</a><button class="btn line" id="cp" type="button">کپی پیام</button></div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="s" id="process">
+    <div class="wrap">
+      <h2>از ورق خام تا میز نهایی</h2>
+      <p class="lead">پایین بروید تا خط جوش مراحل را روشن کند. در هر مرحله عکس و فیلم برای مشتری ارسال می‌شود.</p>
+      <div class="tl" id="tl">
+        <div class="ts"><i>۱</i><b>طراحی و برآورد</b><p>ابعاد، چوب و رنگ آهن را با هم انتخاب می‌کنیم و قیمت و زمان تحویل را شفاف اعلام می‌کنیم.</p></div>
+        <div class="ts"><i>۲</i><b>برش</b><p>پروفیل آهنی و تخته‌ی چوب را با اندازه‌ی نقشه می‌بریم.</p></div>
+        <div class="ts"><i>۳</i><b>جوشکاری</b><p>اسکلت آهنی را جوش می‌دهیم، سنباده می‌زنیم و آماده‌ی رنگ یا پرداخت می‌کنیم.</p></div>
+        <div class="ts"><i>۴</i><b>مونتاژ و تحویل</b><p>چوب و آهن روی هم نصب می‌شوند، پرداخت نهایی انجام می‌شود و کار بسته‌بندی و ارسال می‌شود.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s alt" id="finish">
+    <div class="wrap ba">
+      <div><h2>تفاوت پرداخت</h2><p class="lead" style="margin:0">چوب خام و چوب پرداخت‌شده دو چیز متفاوت‌اند. نوار را بکشید تا ببینید سنباده و روغن یا لاک چه می‌کند.</p></div>
+      <div class="pl" id="pl"><div class="raw"></div><div class="fin"></div><div class="cut"></div>
+        <span class="lab a">پرداخت‌شده</span><span class="lab b">خام</span>
+        <input type="range" min="0" max="100" value="50" aria-label="مقایسه‌ی چوب خام و پرداخت‌شده"></div>
+    </div>
+  </section>
+
+  <section class="s" id="order">
+    <div class="wrap"><div class="cta">
+      <div><h2>طرح‌تان را برای ما بفرستید</h2><p>عکس یا توضیحی از چیزی که می‌خواهید بفرستید تا قیمت و زمان ساخت را اعلام کنیم.</p></div>
+      <a class="btn" href="#">پیام در واتساپ</a>
+    </div></div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>ووتال (Wootal) · چوب و آهن دست‌ساز</span><span>اینستاگرام · تلگرام · واتساپ</span></div></footer>
+
+<script>
+(function(){
+  var $=function(s){return document.querySelector(s)},RM=matchMedia('(prefers-reduced-motion: reduce)').matches,fa=function(n){return n.toLocaleString('fa-IR')};
+
+  /* ---------- isometric engine ---------- */
+  var K=.866,PAL={w:['#ebb878','#bd8247','#8d5a2f'],m:['#e8eef2','#94a0a9','#5a656d'],c:['#ffb98a','#e8793a','#a64d1f']};
+  function P(x,y,z,s){return[(x-y)*K*s,(x+y)*.5*s-z*s]}
+  function boxes(items,s,pal){
+    pal=pal||PAL;var out='',pts=[];
+    items.forEach(function(b){
+      var x=b[0],y=b[1],z=b[2],w=b[3],d=b[4],h=b[5],c=pal[b[6]];
+      function p(a,b2,c2){var q=P(a,b2,c2,s);pts.push(q);return q[0].toFixed(1)+','+q[1].toFixed(1)}
+      var top=[p(x,y,z+h),p(x+w,y,z+h),p(x+w,y+d,z+h),p(x,y+d,z+h)].join(' '),
+          lf=[p(x,y+d,z),p(x+w,y+d,z),p(x+w,y+d,z+h),p(x,y+d,z+h)].join(' '),
+          rt=[p(x+w,y,z),p(x+w,y+d,z),p(x+w,y+d,z+h),p(x+w,y,z+h)].join(' ');
+      out+='<g stroke="rgba(0,0,0,.3)" stroke-width=".8" stroke-linejoin="round"><polygon fill="'+c[1]+'" points="'+lf+'"/><polygon fill="'+c[2]+'" points="'+rt+'"/><polygon fill="'+c[0]+'" points="'+top+'"/></g>';
+      if(b[6]==='w'&&w*d>500){var g='',i,a,e;
+        if(w>=d){for(i=y+5;i<y+d;i+=6){a=P(x+1,i,z+h,s);e=P(x+w-1,i,z+h,s);g+='M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+'L'+e[0].toFixed(1)+' '+e[1].toFixed(1)}}
+        else{for(i=x+5;i<x+w;i+=6){a=P(i,y+1,z+h,s);e=P(i,y+d-1,z+h,s);g+='M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+'L'+e[0].toFixed(1)+' '+e[1].toFixed(1)}}
+        out+='<path d="'+g+'" stroke="rgba(60,30,10,.3)" stroke-width=".9" fill="none"/>'}
+    });
+    return{svg:out,pts:pts}
+  }
+  function vbOf(pts,pad){var a=1e9,b=1e9,c=-1e9,d=-1e9;pts.forEach(function(q){a=Math.min(a,q[0]);b=Math.min(b,q[1]);c=Math.max(c,q[0]);d=Math.max(d,q[1])});return[a-pad,b-pad,c-a+2*pad,d-b+2*pad].join(' ')}
+  function mini(items,sc){var r=boxes(items,sc);return'<svg viewBox="'+vbOf(r.pts,8)+'" aria-hidden="true">'+r.svg+'</svg>'}
+  var SHAPES={
+    table:[[10,10,0,8,8,70,'m'],[18,12,18,104,4,4,'m'],[122,10,0,8,8,70,'m'],[10,62,0,8,8,70,'m'],[18,64,18,104,4,4,'m'],[122,62,0,8,8,70,'m'],[0,0,70,140,80,8,'w']],
+    chair:[[2,2,0,4,4,30,'m'],[34,2,0,4,4,30,'m'],[2,34,0,4,4,30,'m'],[34,34,0,4,4,30,'m'],[0,0,30,40,40,5,'w'],[0,0,35,40,4,40,'w']],
+    shelf:[[0,0,0,4,30,90,'m'],[4,0,0,56,30,4,'w'],[4,0,30,56,30,4,'w'],[4,0,60,56,30,4,'w'],[4,0,86,56,30,4,'w'],[60,0,0,4,30,90,'m']],
+    side:[[2,2,0,4,4,50,'m'],[54,2,0,4,4,50,'m'],[6,6,18,48,28,3,'w'],[2,34,0,4,4,50,'m'],[54,34,0,4,4,50,'m'],[0,0,50,60,40,5,'w']]};
+  var SC={table:1.5,chair:2.6,shelf:2,side:2.6};
+  document.querySelectorAll('[data-i]').forEach(function(n){var k=n.getAttribute('data-i');n.innerHTML=mini(SHAPES[k],SC[k])});
+
+  /* ---------- table designer ---------- */
+  var WOODS={beech:['راش',['#f3dcb3','#d1a76d','#a27c47']],walnut:['گردو',['#8d5c3b','#5f3b22','#3e2514']],oak:['بلوط',['#e6b36f','#b9813f','#8b5a28']]},
+      METALS={black:['آهن مشکی مات',['#5a5f66','#33373b','#1e2023']],steel:['استیل',PAL.m],brass:['برنج',['#f6dd90','#c79c3b','#8c6b1f']]},
+      pv=$('#pv'),form=$('#cfg'),FIT=null;
+  function tbl(L,W){return[[8,8,0,6,6,70,'m'],[14,9,15,L-28,4,3,'m'],[L-14,8,0,6,6,70,'m'],[8,W-14,0,6,6,70,'m'],[14,W-13,15,L-28,4,3,'m'],[L-14,W-14,0,6,6,70,'m'],[0,0,70,L,W,5,'w']]}
+  FIT=vbOf(boxes(tbl(220,110),1.5).pts.concat(boxes(tbl(100,60),1.5).pts),14);
+  function msgText(){var L=+$('#len').value,W=+$('#wid').value,w=WOODS[form.wood.value][0],m=METALS[form.metal.value][0];
+    return'سلام، می‌خواهم یک میز سفارش بدهم: صفحه‌ی چوب '+w+'، پایه‌ی '+m+'، ابعاد '+fa(L)+' در '+fa(W)+' سانتی‌متر. لطفاً قیمت و زمان ساخت را اعلام کنید.'}
+  function cfg(){
+    var L=+$('#len').value,W=+$('#wid').value;
+    $('#lo').textContent=fa(L)+' سانتی‌متر';$('#wo').textContent=fa(W)+' سانتی‌متر';
+    var pal={w:WOODS[form.wood.value][1],m:METALS[form.metal.value][1],c:PAL.c},r=boxes(tbl(L,W),1.5,pal);
+    pv.innerHTML='<svg viewBox="'+FIT+'"><ellipse cx="'+P(L/2,W/2,0,1.5)[0]+'" cy="'+(P(L/2,W/2,0,1.5)[1]+4)+'" rx="'+(L*.9)+'" ry="'+(W*.32)+'" fill="rgba(0,0,0,.4)"/>'+r.svg+'</svg>';
+    var t=msgText();$('#msg').textContent=t;$('#wa').href='https://wa.me/?text='+encodeURIComponent(t)}
+  form.addEventListener('input',cfg);cfg();
+  $('#cp').addEventListener('click',function(){var b=this,t=msgText();
+    function ok(){b.textContent='کپی شد';setTimeout(function(){b.textContent='کپی پیام'},1800)}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(ok,function(){})}
+  });
+
+  /* ---------- counters, scroll progress, timeline ---------- */
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;cio.unobserve(e.target);
+    var el=e.target,to=+el.dataset.to,sfx=el.dataset.pct?'٪':'',pre=el.dataset.plus?'+':'',t0=null;
+    if(RM)return;
+    requestAnimationFrame(function f(t){if(t0===null)t0=t;var k=Math.min(1,(t-t0)/1200),v=Math.round(to*(1-Math.pow(1-k,3)));el.textContent=fa(v)+sfx;if(k<1)requestAnimationFrame(f);else el.textContent=fa(to)+sfx})
+  })},{threshold:.6});
+  document.querySelectorAll('.stat b').forEach(function(b){cio.observe(b)});
+  var tl=$('#tl'),ts=[].slice.call(tl.querySelectorAll('.ts')),bar=$('.prog i'),tick=false;
+  function onScroll(){tick=false;
+    var h=document.documentElement,sp=h.scrollTop/(h.scrollHeight-innerHeight||1)*100;bar.parentNode.style.setProperty('--sp',sp+'%');bar.style.setProperty('--sp',sp+'%');
+    var r=tl.getBoundingClientRect(),y=innerHeight*.6;tl.style.setProperty('--p',Math.max(0,Math.min(1,(y-r.top)/r.height))*100+'%');
+    ts.forEach(function(s){s.classList.toggle('on',s.getBoundingClientRect().top<y)})}
+  addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});addEventListener('resize',onScroll);onScroll();
+
+  /* ---------- before / after ---------- */
+  var pl=$('#pl');pl.querySelector('input').addEventListener('input',function(){pl.style.setProperty('--x',this.value)});
+
+  /* ---------- sparks + torch pointer + tilt ---------- */
+  var hero=$('.hero'),cv=$('#sparks'),weld=$('#weld'),stage=$('#stage');
+  if(RM)return;
+  var ctx=cv.getContext('2d'),S=[],W=0,H=0,dpr=Math.min(devicePixelRatio||1,2),last=0,acc=0,lp=null;
+  function size(){var r=hero.getBoundingClientRect();W=r.width;H=r.height;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
+  size();addEventListener('resize',size);
+  function wo(){var a=weld.getBoundingClientRect(),b=hero.getBoundingClientRect();return{x:a.left-b.left+a.width/2,y:a.top-b.top+a.height/2}}
+  function burst(n,o,sp){for(var i=0;i<n;i++){var a=-Math.PI/2+(Math.random()-.5)*(sp||2.6),v=80+Math.random()*(sp?420:320);
+    S.push({x:o.x,y:o.y,vx:Math.cos(a)*v,vy:Math.sin(a)*v,l:0,m:.5+Math.random()*.9,z:1+Math.random()*1.6})}}
+  function rel(e){var b=hero.getBoundingClientRect();return{x:e.clientX-b.left,y:e.clientY-b.top}}
+  hero.addEventListener('pointermove',function(e){var o=rel(e);
+    if(lp){var sp=Math.hypot(o.x-lp.x,o.y-lp.y);if(sp>3)burst(Math.min(10,1+(sp/9|0)),o,3.6)}lp=o;
+    var s=stage.getBoundingClientRect(),cx=s.left+s.width/2,cy=s.top+s.height/2;
+    stage.style.transform='perspective(900px) rotateY('+(Math.max(-1,Math.min(1,(e.clientX-cx)/600))*-9).toFixed(1)+'deg) rotateX('+(Math.max(-1,Math.min(1,(e.clientY-cy)/500))*6).toFixed(1)+'deg)'});
+  hero.addEventListener('pointerleave',function(){lp=null;stage.style.transform=''});
+  hero.addEventListener('pointerdown',function(e){burst(34,rel(e),3.8)});
+  var vis=true;new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(hero);
+  requestAnimationFrame(function tick(t){
+    var dt=Math.min((t-last)/1000||0,.05);last=t;
+    if(vis){acc+=dt;
+      if(acc>.07){burst(3+(Math.random()*4|0),wo());acc=0;if(Math.random()<.07)burst(26,wo())}
+      ctx.clearRect(0,0,W,H);ctx.globalCompositeOperation='lighter';
+      for(var i=S.length-1;i>=0;i--){var p=S[i];p.l+=dt;if(p.l>p.m){S.splice(i,1);continue}
+        p.vy+=700*dt;p.vx*=.995;var px=p.x,py=p.y;p.x+=p.vx*dt;p.y+=p.vy*dt;
+        if(p.y>H*.8&&p.vy>0){p.vy*=-.35;p.y=H*.8}
+        var k=1-p.l/p.m;ctx.strokeStyle='rgba(255,'+(150+k*90|0)+','+(40+k*80|0)+','+k+')';ctx.lineWidth=p.z;
+        ctx.beginPath();ctx.moveTo(px,py);ctx.lineTo(p.x,p.y);ctx.stroke()}}
+    requestAnimationFrame(tick)})
+})();
+</script>
+</body>
+</html>

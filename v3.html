@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ووتال | چوب و آهن، نقشه تا ساخت</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;500;700;900&display=swap">
+<style>
+:root{
+  --bg:#efe7d8; --panel:#f8f2e6; --ink:#10232d; --muted:#586873; --line:rgba(16,35,45,.16);
+  --petrol:#0d2b38; --petrol2:#12394a; --cream:#f3ead9; --copper:#e8793a; --oak:#d9a066; --chrome:#cfd8de;
+  --font:"Vazirmatn",Tahoma,"Segoe UI",sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#0a1a22;--panel:#10252f;--ink:#f3ead9;--muted:#9db0ba;--line:rgba(243,234,217,.14)}
+}
+:root[data-theme="dark"]{--bg:#0a1a22;--panel:#10252f;--ink:#f3ead9;--muted:#9db0ba;--line:rgba(243,234,217,.14)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);line-height:1.9;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--copper);outline-offset:3px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px;position:relative}
+svg{display:block;width:100%;height:auto}
+
+/* hero: blueprint */
+.hero{position:relative;overflow:hidden;color:var(--cream);background:var(--petrol);isolation:isolate}
+.hero::before{content:"";position:absolute;inset:0;z-index:-2;
+  background:
+    linear-gradient(rgba(243,234,217,.07) 1px,transparent 1px) 0 0/48px 48px,
+    linear-gradient(90deg,rgba(243,234,217,.07) 1px,transparent 1px) 0 0/48px 48px,
+    linear-gradient(rgba(243,234,217,.05) 1px,transparent 1px) 0 0/12px 12px,
+    linear-gradient(90deg,rgba(243,234,217,.05) 1px,transparent 1px) 0 0/12px 12px,
+    linear-gradient(160deg,var(--petrol2),var(--petrol) 60%)}
+.disc{position:absolute;z-index:-1;width:min(640px,90vw);aspect-ratio:1;border-radius:50%;inset-inline-start:-4%;top:50%;transform:translateY(-46%);
+  background:radial-gradient(circle at 40% 35%,#ff9a52,var(--copper) 45%,#b5471a 100%);
+  box-shadow:0 0 0 22px rgba(232,121,58,.14),0 0 0 54px rgba(232,121,58,.07),0 40px 120px rgba(232,121,58,.35)}
+.bar{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:900;font-size:24px}
+.logo i{display:block;width:30px;height:30px;border-radius:50%;background:conic-gradient(var(--oak) 0 50%,var(--chrome) 50% 100%);box-shadow:0 0 0 3px var(--petrol),0 0 0 5px var(--copper)}
+nav{display:flex;gap:28px;font-size:15px;color:#c3cfd5}
+nav a:hover{color:#fff}
+.btn{display:inline-block;padding:12px 26px;border-radius:40px;font-weight:700;font-size:15px;border:0;cursor:pointer;transition:transform .2s,background .2s}
+.btn.hot{background:var(--cream);color:var(--petrol)}
+.btn.hot:hover{transform:translateY(-2px);background:#fff}
+.btn.line{background:transparent;color:var(--cream);box-shadow:inset 0 0 0 2px rgba(243,234,217,.55)}
+.btn.line:hover{background:rgba(243,234,217,.12)}
+
+.hg{display:grid;grid-template-columns:.9fr 1.2fr;gap:20px;align-items:center;padding:30px 0 70px}
+h1{font-size:clamp(36px,5.6vw,64px);line-height:1.3;font-weight:900;margin:0 0 18px}
+.hero p{color:#c9d5da;font-size:18px;max-width:42ch;margin:0 0 28px}
+.acts{display:flex;gap:12px;flex-wrap:wrap}
+.stage{position:relative}
+.ctl{display:flex;align-items:center;gap:16px;margin:6px auto 0;max-width:420px;background:rgba(10,26,34,.6);backdrop-filter:blur(6px);border-radius:40px;padding:10px 22px;box-shadow:inset 0 0 0 1.5px rgba(243,234,217,.3)}
+.ctl label{font-weight:700;font-size:14px;white-space:nowrap}
+input[type=range]{flex:1;appearance:none;-webkit-appearance:none;height:6px;border-radius:3px;background:linear-gradient(90deg,var(--oak),var(--chrome));outline-offset:6px;direction:ltr}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:var(--copper);border:4px solid var(--cream);box-shadow:0 2px 10px rgba(0,0,0,.5);cursor:grab}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:var(--copper);border:4px solid var(--cream);cursor:grab}
+
+/* sections */
+section.s{padding:84px 0}
+section.alt{background:var(--panel)}
+h2{font-size:clamp(28px,3.8vw,42px);font-weight:900;margin:0 0 10px;line-height:1.5}
+.lead{color:var(--muted);max-width:56ch;margin:0 0 44px}
+
+.sw{display:grid;grid-template-columns:repeat(6,1fr);gap:18px}
+.sw div{text-align:center}
+.sw i{display:block;width:96px;height:96px;margin:0 auto 12px;border-radius:50%;position:relative;overflow:hidden;box-shadow:0 10px 24px rgba(0,0,0,.28),inset 0 -8px 16px rgba(0,0,0,.25),inset 0 6px 10px rgba(255,255,255,.25)}
+.sw i::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(92deg,rgba(0,0,0,0) 0 5px,rgba(0,0,0,.13) 5px 7px,rgba(255,255,255,.06) 7px 12px)}
+.sw i.m::after{background:repeating-linear-gradient(90deg,rgba(255,255,255,.12) 0 1px,rgba(0,0,0,.12) 1px 2px)}
+.sw b{display:block}
+.sw small{color:var(--muted);font-size:13px}
+.beech{background:linear-gradient(135deg,#f0d9b0,#cfa56b)}
+.walnut{background:linear-gradient(135deg,#7a4e30,#33200f)}
+.oakc{background:linear-gradient(135deg,#d8a35c,#a06a2c)}
+.iron{background:linear-gradient(135deg,#6a7279,#262a2e)}
+.steel{background:linear-gradient(135deg,#f4f7f9,#8f9aa3)}
+.brass{background:conic-gradient(from 30deg,#e9c76e,#9e7420,#f6e19a,#9e7420,#e9c76e)}
+
+.cats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.cat{border-radius:22px;padding:20px 20px 22px;position:relative;overflow:hidden;color:#10232d;transition:transform .25s}
+.cat:hover{transform:translateY(-6px) rotate(-1deg)}
+.cat svg{height:150px;margin-bottom:12px;filter:drop-shadow(0 14px 12px rgba(0,0,0,.28))}
+.cat h3{margin:0;font-size:21px}.cat span{font-size:14px;opacity:.78}
+.c1{background:linear-gradient(150deg,#f2c28a,#d9a066)}
+.c2{background:linear-gradient(150deg,#d8e2e8,#9fb1bc)}
+.c3{background:linear-gradient(150deg,#ffb07a,#e8793a)}
+.c4{background:linear-gradient(150deg,#8fd0d4,#4aa3ad)}
+
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+.step{background:var(--bg);border-radius:22px;padding:22px 22px 26px;box-shadow:0 0 0 1px var(--line)}
+section.s:not(.alt) .step{background:var(--panel)}
+.step svg{height:130px;margin-bottom:10px;color:var(--ink)}
+.step b{display:block;font-size:21px}.step p{margin:4px 0 0;color:var(--muted)}
+.tag{display:inline-block;font-size:13px;font-weight:700;padding:2px 14px;border-radius:20px;background:var(--copper);color:#fff;margin-bottom:8px}
+
+.cta{border-radius:28px;padding:56px 46px;display:grid;grid-template-columns:1fr auto;gap:26px;align-items:center;color:#fff;position:relative;overflow:hidden;
+  background:radial-gradient(circle at 12% 120%,#ffb36b 0 22%,transparent 23%),radial-gradient(circle at 12% 120%,rgba(255,255,255,.14) 0 34%,transparent 35%),linear-gradient(120deg,#b5471a,var(--copper))}
+.cta h2{margin:0 0 6px}.cta p{margin:0;opacity:.92}
+.cta .btn{background:var(--petrol);color:var(--cream)}
+.cta .btn:hover{transform:translateY(-2px)}
+footer{background:var(--petrol);color:#9db0ba;padding:34px 0;font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+
+@media (max-width:900px){
+  nav{display:none}
+  .hg{grid-template-columns:1fr;padding-bottom:50px}
+  .sw{grid-template-columns:repeat(3,1fr)}
+  .cats{grid-template-columns:repeat(2,1fr)}
+  .steps{grid-template-columns:1fr}
+  .cta{grid-template-columns:1fr;padding:36px 26px}
+  .disc{inset-inline-start:-30%;top:62%}
+}
+@media (prefers-reduced-motion:reduce){.btn,.cat{transition:none}}
+</style>
+</head>
+<body>
+
+<div class="hero" id="top">
+  <div class="disc" aria-hidden="true"></div>
+  <header>
+    <div class="wrap bar">
+      <a class="logo" href="#top"><i aria-hidden="true"></i>ووتال</a>
+      <nav aria-label="منوی اصلی"><a href="#materials">مواد</a><a href="#products">محصولات</a><a href="#process">روند ساخت</a><a href="#order">سفارش</a></nav>
+      <a class="btn hot" href="#order">درخواست قیمت</a>
+    </div>
+  </header>
+  <div class="wrap hg">
+    <div>
+      <h1>چوب و آهن،<br>هر کدام جای خودش</h1>
+      <p>هر میز ووتال از دو ماده‌ی جدا شروع می‌شود و در کارگاه به یک تکه تبدیل می‌شود. اسلایدر را بکشید و از نزدیک ببینید.</p>
+      <div class="acts"><a class="btn hot" href="#products">دیدن نمونه‌کارها</a><a class="btn line" href="#process">روند ساخت</a></div>
+    </div>
+    <div class="stage">
+      <div id="hv" role="img" aria-label="نمای ایزومتریک میز؛ صفحه چوبی از پایه آهنی جدا می‌شود"></div>
+      <div class="ctl"><label for="lift">سوار / جدا</label><input id="lift" type="range" min="0" max="64" value="0"></div>
+    </div>
+  </div>
+</div>
+
+<main>
+  <section class="s" id="materials">
+    <div class="wrap">
+      <h2>موادی که با آن‌ها می‌سازیم</h2>
+      <p class="lead">فهرست نهایی چوب‌ها و فلزها را صاحب کارگاه مشخص می‌کند؛ این‌ها نمونه‌اند.</p>
+      <div class="sw">
+        <div><i class="beech"></i><b>راش</b><small>روشن و یکدست</small></div>
+        <div><i class="walnut"></i><b>گردو</b><small>تیره و پرنقش‌ونگار</small></div>
+        <div><i class="oakc"></i><b>بلوط</b><small>محکم، دانه‌ی پررنگ</small></div>
+        <div><i class="iron m"></i><b>آهن</b><small>مات و صنعتی</small></div>
+        <div><i class="steel m"></i><b>استیل</b><small>براق و مقاوم</small></div>
+        <div><i class="brass m"></i><b>برنج</b><small>طلایی و گرم</small></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s alt" id="products">
+    <div class="wrap">
+      <h2>محصولات ووتال</h2>
+      <p class="lead">دسته‌بندی‌ها پس از جلسه با صاحب کارگاه نهایی می‌شود؛ فعلاً چهار دسته‌ی نمونه گذاشته‌ایم.</p>
+      <div class="cats">
+        <a class="cat c1" href="#"><div data-i="table"></div><h3>میز</h3><span>ناهارخوری، کار، کنسول</span></a>
+        <a class="cat c2" href="#"><div data-i="chair"></div><h3>صندلی</h3><span>اپن، ناهارخوری</span></a>
+        <a class="cat c3" href="#"><div data-i="shelf"></div><h3>قفسه و کتابخانه</h3><span>دیواری و ایستاده</span></a>
+        <a class="cat c4" href="#"><div data-i="side"></div><h3>کارهای سفارشی</h3><span>هر طرحی که در ذهن دارید</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="s" id="process">
+    <div class="wrap">
+      <h2>از نقشه تا میز نهایی</h2>
+      <p class="lead">هر سفارش این سه مرحله را طی می‌کند و در هر مرحله عکس و فیلم برایتان می‌فرستیم.</p>
+      <div class="steps">
+        <div class="step"><div data-i="s1"></div><span class="tag">مرحله ۱</span><b>طراحی و برآورد</b><p>ابعاد، چوب و رنگ آهن را با هم انتخاب می‌کنیم و قیمت و زمان تحویل را شفاف اعلام می‌کنیم.</p></div>
+        <div class="step"><div data-i="s2"></div><span class="tag">مرحله ۲</span><b>برش و جوشکاری</b><p>اسکلت آهنی را می‌بریم، جوش می‌دهیم و پرداخت می‌کنیم؛ چوب هم همزمان آماده می‌شود.</p></div>
+        <div class="step"><div data-i="s3"></div><span class="tag">مرحله ۳</span><b>مونتاژ و تحویل</b><p>چوب و آهن روی هم نصب می‌شوند، روغن‌کاری نهایی انجام می‌شود و کار ارسال می‌شود.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="s alt" id="order">
+    <div class="wrap">
+      <div class="cta">
+        <div><h2>طرح‌تان را برای ما بفرستید</h2><p>عکس یا توضیحی از چیزی که می‌خواهید بفرستید تا قیمت و زمان ساخت را اعلام کنیم.</p></div>
+        <a class="btn" href="#">پیام در واتساپ</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap"><span>ووتال (Wootal) · چوب و آهن دست‌ساز</span><span>اینستاگرام · تلگرام · واتساپ</span></div></footer>
+
+<script>
+(function(){
+  var K=.866,COL={w:['#ebb878','#bd8247','#8d5a2f'],m:['#e8eef2','#94a0a9','#5a656d'],c:['#ffb98a','#e8793a','#a64d1f']};
+  function P(x,y,z,s){return[(x-y)*K*s,(x+y)*.5*s-z*s]}
+  function boxes(items,s,mode){
+    var out='',pts=[];
+    items.forEach(function(b){
+      var x=b[0],y=b[1],z=b[2],w=b[3],d=b[4],h=b[5],c=COL[b[6]];
+      function p(a,b2,c2){var q=P(a,b2,c2,s);pts.push(q);return q[0].toFixed(1)+','+q[1].toFixed(1)}
+      var top=[p(x,y,z+h),p(x+w,y,z+h),p(x+w,y+d,z+h),p(x,y+d,z+h)].join(' ');
+      var lf=[p(x,y+d,z),p(x+w,y+d,z),p(x+w,y+d,z+h),p(x,y+d,z+h)].join(' ');
+      var rt=[p(x+w,y,z),p(x+w,y+d,z),p(x+w,y+d,z+h),p(x+w,y,z+h)].join(' ');
+      if(mode==='wire'){
+        out+='<g fill="none" stroke="currentColor" stroke-opacity=".85" stroke-width="1.4" stroke-dasharray="5 4" stroke-linejoin="round"><polygon points="'+lf+'"/><polygon points="'+rt+'"/><polygon points="'+top+'"/></g>';return}
+      out+='<g stroke="rgba(0,0,0,.3)" stroke-width=".8" stroke-linejoin="round"><polygon fill="'+c[1]+'" points="'+lf+'"/><polygon fill="'+c[2]+'" points="'+rt+'"/><polygon fill="'+c[0]+'" points="'+top+'"/></g>';
+      if(b[6]==='w'&&w*d>500){
+        var g='',i,a,e;
+        if(w>=d){for(i=y+5;i<y+d;i+=6){a=P(x+1,i,z+h,s);e=P(x+w-1,i,z+h,s);g+='M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+'L'+e[0].toFixed(1)+' '+e[1].toFixed(1)}}
+        else{for(i=x+5;i<x+w;i+=6){a=P(i,y+1,z+h,s);e=P(i,y+d-1,z+h,s);g+='M'+a[0].toFixed(1)+' '+a[1].toFixed(1)+'L'+e[0].toFixed(1)+' '+e[1].toFixed(1)}}
+        out+='<path d="'+g+'" stroke="rgba(90,45,15,.28)" stroke-width=".9" fill="none"/>'}
+    });
+    return{svg:out,pts:pts}
+  }
+  function bbox(pts){var a=1e9,b=1e9,c=-1e9,d=-1e9;pts.forEach(function(q){a=Math.min(a,q[0]);b=Math.min(b,q[1]);c=Math.max(c,q[0]);d=Math.max(d,q[1])});return[a,b,c,d]}
+  function vbOf(pts,pad){var b=bbox(pts);return[b[0]-pad,b[1]-pad,b[2]-b[0]+2*pad,b[3]-b[1]+2*pad].join(' ')}
+  function mini(items,mode,sc,vb){var r=boxes(items,sc,mode);return'<svg viewBox="'+(vb||vbOf(r.pts,8))+'" aria-hidden="true">'+r.svg+'</svg>'}
+
+  function table(e){return[
+    [10,10,0,8,8,70,'m'],[9,9,70,10,10,2,'c'],[18,12,18,104,4,4,'m'],
+    [122,10,0,8,8,70,'m'],[121,9,70,10,10,2,'c'],
+    [10,62,0,8,8,70,'m'],[9,61,70,10,10,2,'c'],[18,64,18,104,4,4,'m'],
+    [122,62,0,8,8,70,'m'],[121,61,70,10,10,2,'c'],
+    [0,0,72+e,140,80,8,'w']]}
+  var chair=[[2,2,0,4,4,30,'m'],[34,2,0,4,4,30,'m'],[2,34,0,4,4,30,'m'],[34,34,0,4,4,30,'m'],[0,0,30,40,40,5,'w'],[0,0,35,40,4,40,'w']];
+  var shelf=[[0,0,0,4,30,90,'m'],[4,0,0,56,30,4,'w'],[4,0,30,56,30,4,'w'],[4,0,60,56,30,4,'w'],[4,0,86,56,30,4,'w'],[60,0,0,4,30,90,'m']];
+  var side=[[2,2,0,4,4,50,'m'],[54,2,0,4,4,50,'m'],[6,6,18,48,28,3,'w'],[2,34,0,4,4,50,'m'],[54,34,0,4,4,50,'m'],[0,0,50,60,40,5,'w']];
+
+  /* hero */
+  var S=2.4,hv=document.getElementById('hv'),sl=document.getElementById('lift');
+  var HB=bbox(boxes(table(64),S).pts),
+      HVB=[HB[0]-30,HB[1]-24,HB[2]-HB[0]+250,HB[3]-HB[1]+60].join(' ');
+  function call(a3,dx,dy,txt,op){
+    var a=P(a3[0],a3[1],a3[2],S),bx=a[0]+dx,by=a[1]+dy,w=txt.length*8.4+36;
+    return'<g opacity="'+op+'"><line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+bx+'" y2="'+by+'" stroke="#ffd9a8" stroke-width="1.6"/><circle cx="'+a[0]+'" cy="'+a[1]+'" r="4.5" fill="#ffd9a8"/><rect x="'+(bx-w/2)+'" y="'+(by-18)+'" width="'+w+'" height="36" rx="18" fill="#f3ead9"/><text x="'+bx+'" y="'+(by+6)+'" text-anchor="middle" font-size="16" font-weight="700" fill="#10232d" font-family="Vazirmatn,Tahoma,sans-serif">'+txt+'</text></g>'}
+  function draw(e){
+    var it=table(e),base=boxes(it.slice(0,-1),S).svg,slab=boxes(it.slice(-1),S).svg,ln='',op=Math.min(1,e/34).toFixed(2);
+    [[14,14],[126,14],[14,66],[126,66]].forEach(function(c){var a=P(c[0],c[1],72,S),b=P(c[0],c[1],72+e,S);
+      ln+='<line x1="'+a[0]+'" y1="'+a[1]+'" x2="'+b[0]+'" y2="'+b[1]+'" stroke="#ffd9a8" stroke-width="1.6" stroke-dasharray="6 6"/>'});
+    var sh=P(70,40,0,S);
+    hv.innerHTML='<svg viewBox="'+HVB+'"><ellipse cx="'+sh[0]+'" cy="'+(sh[1]+6)+'" rx="190" ry="46" fill="rgba(0,0,0,.35)"/>'+base+ln+slab+
+      call([140,40,76+e],70,-62,'صفحه‌ی چوب طبیعی',op)+call([131,14,71],104,4,'صفحه‌ی اتصال و جوش',op)+call([130,14,38],92,74,'پایه‌ی آهنی جوشکاری‌شده',op)+'</svg>'}
+  var cur=0;draw(0);
+  sl.addEventListener('input',function(){cur=+sl.value;draw(cur)});
+  if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    var t0=null,touched=false;sl.addEventListener('pointerdown',function(){touched=true});
+    setTimeout(function(){requestAnimationFrame(function f(t){
+      if(touched)return;if(t0===null)t0=t;var k=Math.min(1,(t-t0)/1500),v=64*(1-Math.pow(1-k,3));
+      sl.value=v;draw(v);if(k<1)requestAnimationFrame(f)})},700)
+  }else{sl.value=64;draw(64)}
+
+  /* cards + steps */
+  var T=table(0),FULL=vbOf(boxes(T,1.5).pts,10);
+  var M={table:mini(T,0,1.5),chair:mini(chair,0,2.6),shelf:mini(shelf,0,2),side:mini(side,0,2.6),
+    s1:mini(T,'wire',1.5,FULL),s2:mini(T.filter(function(b){return b[6]!=='w'}),0,1.5,FULL),s3:mini(T,0,1.5,FULL)};
+  document.querySelectorAll('[data-i]').forEach(function(n){n.innerHTML=M[n.getAttribute('data-i')]});
+})();
+</script>
+</body>
+</html>
